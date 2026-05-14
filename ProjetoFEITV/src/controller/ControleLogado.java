@@ -37,16 +37,18 @@ public class ControleLogado {
         ResultSet res = dao.buscarPorNome(nome);
 
         if (res.next()) {
+            
+            int id = res.getInt("id");
 
             String titulo = res.getString("titulo");
             String ano = res.getString("ano");
             String duracao = res.getString("duracao");
             String tipo = res.getString("tipo");
 
-            ResultadoBusca telaResultado =
-                new ResultadoBusca(titulo, ano, duracao, tipo);
+            ResultadoBusca telaResultado = new ResultadoBusca(usuario, id, titulo, ano, duracao, tipo);
 
             telaResultado.setVisible(true);
+            tela4.dispose();
 
         } else {
             JOptionPane.showMessageDialog(tela4, "Vídeo não encontrado");

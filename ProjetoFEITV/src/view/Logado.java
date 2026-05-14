@@ -5,6 +5,7 @@
 package view;
 import controller.ControleLogado;
 import model.Usuarios;
+import view.Lista;
 
 /**
  *
@@ -19,8 +20,14 @@ public class Logado extends javax.swing.JFrame {
      */
     public Logado(Usuarios usuario) {
         initComponents();
+        this.usuario = usuario;
         c = new ControleLogado(this, usuario);
     }
+
+    public Logado() {
+        initComponents();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +42,9 @@ public class Logado extends javax.swing.JFrame {
         lbl_buscar = new javax.swing.JLabel();
         txt_buscar = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
+        btn_curtidas = new javax.swing.JButton();
+        btn_listas = new javax.swing.JButton();
+        btn_sair = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,6 +58,19 @@ public class Logado extends javax.swing.JFrame {
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(this::btn_buscarActionPerformed);
 
+        btn_curtidas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_curtidas.setText("Visualizar Curtidas");
+        btn_curtidas.addActionListener(this::btn_curtidasActionPerformed);
+
+        btn_listas.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_listas.setText("Visualizar Listas");
+        btn_listas.addActionListener(this::btn_listasActionPerformed);
+
+        btn_sair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_sair.setText("Sair");
+        btn_sair.setActionCommand("");
+        btn_sair.addActionListener(this::btn_sairActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -55,22 +78,35 @@ public class Logado extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btn_buscar))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(265, 265, 265)
                         .addComponent(lbl_fei))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(212, 212, 212)
-                        .addComponent(lbl_buscar)))
+                        .addComponent(lbl_buscar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_curtidas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_listas))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(btn_buscar)))))
                 .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_sair)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(14, 14, 14)
+                .addComponent(btn_sair)
+                .addGap(30, 30, 30)
                 .addComponent(lbl_fei)
                 .addGap(34, 34, 34)
                 .addComponent(lbl_buscar)
@@ -78,7 +114,11 @@ public class Logado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscar))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_curtidas)
+                    .addComponent(btn_listas))
+                .addGap(70, 70, 70))
         );
 
         pack();
@@ -88,6 +128,21 @@ public class Logado extends javax.swing.JFrame {
         String nome = txt_buscar.getText();
         c.buscarPorNome(nome);        // TODO add your handling code here:
     }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_curtidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_curtidasActionPerformed
+        Curtidas tela = new Curtidas(usuario);
+        tela.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_btn_curtidasActionPerformed
+
+    private void btn_listasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listasActionPerformed
+        Lista tela = new Lista(usuario);
+        tela.setVisible(true);
+        this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_btn_listasActionPerformed
+
+    private void btn_sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_sairActionPerformed
+        System.exit(0);// TODO add your handling code here:
+    }//GEN-LAST:event_btn_sairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,11 +171,15 @@ public class Logado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_curtidas;
+    private javax.swing.JButton btn_listas;
+    private javax.swing.JToggleButton btn_sair;
     private javax.swing.JLabel lbl_buscar;
     private javax.swing.JLabel lbl_fei;
     private javax.swing.JTextField txt_buscar;
     // End of variables declaration//GEN-END:variables
     private ControleLogado c;
+    private Usuarios usuario;
 
 }
 

@@ -36,6 +36,8 @@ public class ControleCadastro {
             dao.inserir(usuario);
             JOptionPane.showMessageDialog(tela3, "Usuario cadastrado!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             
+            tela3.dispose();
+            
         }catch (SQLException ex){
             JOptionPane.showMessageDialog(tela3, "Usuario não cadastrado!", "Erro", JOptionPane.INFORMATION_MESSAGE);
         }
