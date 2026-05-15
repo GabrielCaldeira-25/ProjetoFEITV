@@ -5,7 +5,7 @@ Aluno: Gabriel Caldeira
 RA: 22.125.034-3
 Data: Maio/2026
 
-Link do vídeo demonstrativo: (coloque o link aqui)
+Link do vídeo demonstrativo: https://youtu.be/WDRK8kPDAdc
 
 1. Descrição do Projeto
 
