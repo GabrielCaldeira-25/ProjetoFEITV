@@ -39,10 +39,13 @@ public class ControleResultadoBusca {
             JOptionPane.showMessageDialog(tela, "Curtido com sucesso!");
 
         } catch (SQLException e) {
-            if (e.getMessage().contains("duplicate") || e.getMessage().contains("unique")) {
+            if (e.getMessage().contains("unica_curtida") || 
+                e.getMessage().contains("duplicate") || 
+                e.getMessage().contains("unique") ||
+                e.getMessage().contains("unicidade")) {
                 JOptionPane.showMessageDialog(tela, "Você já curtiu esse vídeo!");
             } else {
-                JOptionPane.showMessageDialog(tela, "Erro ao curtir: " + e.getMessage());
+                JOptionPane.showMessageDialog(tela, "Erro ao curtir!");
             }
         }
     }
